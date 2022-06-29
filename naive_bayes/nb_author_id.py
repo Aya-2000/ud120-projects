@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+
 
 """ 
     This is the code to accompany the Lesson 1 (Naive Bayes) mini-project. 
@@ -11,10 +11,11 @@
 """
     
 import sys
+from pydoc import importfile
 from time import time
-sys.path.append("../tools/")
-from email_preprocess import preprocess
+sys.path.append("../tools/.. ")
 
+from email_preprocess import preprocess
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
