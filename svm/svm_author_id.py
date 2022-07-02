@@ -11,7 +11,7 @@
 import sys
 from time import time
 sys.path.append("../tools/")
-from email_preprocess import preprocess
+from tools.email_preprocess import preprocess
 
 
 ### features_train and features_test are the features for the training
@@ -19,11 +19,23 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
-
+features_train = features_train[:int(len(features_train)/100)]
+labels_train = labels_train[:int(len(labels_train)/100)]
 #########################################################
 ### your code goes here ###
+from sklearn.svm import SVC
+clf = SVC(kernel="linear")
+clf.fit(features_train, labels_train)
 
+#### now your job is to fit the classifier
+#### using the training features/labels, and to
+#### make a set of predictions on the test data
 
+pred=clf.predict(features_test)
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+def submitAccuracy():
+    return acc
 #########################################################
 
 #########################################################
