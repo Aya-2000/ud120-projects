@@ -15,7 +15,10 @@
 import os
 import sys
 import joblib
+
+
 sys.path.append(os.path.abspath("../tools/"))
+sort_keys = '../tools/python2_lesson06_keys.pkl'
 from feature_format import featureFormat, targetFeatureSplit
 dictionary = joblib.load( open("../final_project/final_project_dataset_modified.pkl", "rb") )
 
@@ -38,6 +41,12 @@ test_color = "b"
 ### Please name it reg, so that the plotting code below picks it up and 
 ### plots it correctly. Don't forget to change the test_color above from "b" to
 ### "r" to differentiate training points from test points.
+
+
+from sklearn import linear_model
+reg = linear_model.LinearRegression()
+reg.fit (feature_train, target_train)
+
 
 
 
