@@ -17,17 +17,18 @@ import sys
 import joblib
 
 
-sys.path.append(os.path.abspath("../tools/"))
-sort_keys = '../tools/python2_lesson06_keys.pkl'
+#sys.path.append(os.path.abspath("../tools/"))
+sys.path.append("../UD120-PROJECTS")
+sort_keys = '../UD120-PROJECTS/tools/python2_lesson06_keys.pkl'
 
 from tools.feature_format import featureFormat, targetFeatureSplit
-dictionary = joblib.load( open("../final_project/final_project_dataset_modified.pkl", "rb") )
+dictionary = joblib.load( open("../UD120-PROJECTS/final_project/final_project_dataset_modified.pkl", "rb") )
 
 sort_keys = '../tools/python2_lesson06_keys.pkl'
 ### list the features you want to look at--first item in the 
 ### list will be the "target" feature
 features_list = ["bonus", "salary"]
-data = featureFormat( dictionary, features_list, remove_any_zeroes=True, sort_keys = '../tools/python2_lesson06_keys.pkl')
+data = featureFormat( dictionary, features_list, remove_any_zeroes=True, sort_keys = '../UD120-PROJECTS/tools/python2_lesson06_keys.pkl')
 target, features = targetFeatureSplit( data )
 
 ### training-testing split needed in regression, just like classification

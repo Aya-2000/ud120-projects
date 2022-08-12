@@ -6,11 +6,17 @@
 
 import os
 import joblib
+
 import numpy
 import matplotlib.pyplot as plt
 import sys
-sys.path.append(os.path.abspath("../tools/"))
-from feature_format import featureFormat, targetFeatureSplit
+sys.path.append("../UD120-PROJECTS")
+from sklearn.cluster import KMeans
+#sys.path.append(os.path.abspath("../tools/"))
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_selection import SelectPercentile, f_classif 
+from tools.feature_format import featureFormat, targetFeatureSplit
 
 def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
     """ some plotting code designed to help you visualize your clusters """
@@ -30,11 +36,14 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     plt.ylabel(f2_name)
     plt.savefig(name)
     plt.show()
+    
 
 
 
 ### load in the dict of dicts containing all the data on each person in the dataset
-data_dict = joblib.load( open("../final_project/final_project_dataset.pkl", "rb") )
+#data_dict = joblib.load( "../UD120-PROJECTS/final_project/final_project_dataset.pkl" )
+#data_dict = load_pickle_from_disk(open( "../final_project/final_project_dataset.pkl","rb"))
+data_dict = joblib.load( open("../UD120-PROJECTS/final_project/final_project_dataset.pkl", "rb" ))
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
@@ -43,6 +52,7 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
+#feature_3="total_payments"
 poi  = "poi"
 features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
@@ -59,6 +69,9 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+#kmeans = KMeans(n_clusters=2, random_state=0).fit(f1,f2,f3)
+kmeans = KMeans(n_clusters=2, random_state=0).fit(feature_1,feature_2)
+pred=kmeans.predict(feature_1,feature_2)
 
 
 

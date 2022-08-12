@@ -12,8 +12,10 @@
 import sys
 from pydoc import importfile
 from time import time
-sys.path.append("../tools/.. ")
-from email_preprocess import preprocess
+import joblib
+sys.path.append("../UD120-PROJECTS/tools/..")
+#data_dict = joblib.load( open("../UD120-PROJECTS/tools/email_preprocess, "rb"))
+from tools.email_preprocess import preprocess
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
