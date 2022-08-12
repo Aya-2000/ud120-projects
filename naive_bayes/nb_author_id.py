@@ -13,7 +13,7 @@ import sys
 from pydoc import importfile
 from time import time
 import joblib
-sys.path.append("../UD120-PROJECTS/tools/..")
+sys.path.append("../UD120-PROJECTS")
 #data_dict = joblib.load( open("../UD120-PROJECTS/tools/email_preprocess, "rb"))
 from tools.email_preprocess import preprocess
 

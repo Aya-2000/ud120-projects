@@ -10,7 +10,7 @@
     
 import sys
 from time import time
-sys.path.append("../UD120-PROJECTS/tools/..")
+sys.path.append("../UD120-PROJECTS")
 import joblib
 data_dict = joblib.load( open("../UD120-PROJECTS/tools/email_authors.pkl", "rb" ))
 from tools.email_preprocess import preprocess
