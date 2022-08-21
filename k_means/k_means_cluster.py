@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectPercentile, f_classif 
 from tools.feature_format import featureFormat, targetFeatureSplit
+from sklearn.preprocessing import MinMaxScaler
 
 def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
     """ some plotting code designed to help you visualize your clusters """
@@ -72,6 +73,11 @@ plt.show()
 #kmeans = KMeans(n_clusters=2, random_state=0).fit(f1,f2,f3)
 kmeans = KMeans(n_clusters=2, random_state=0).fit(feature_1,feature_2)
 pred=kmeans.predict(feature_1,feature_2)
+scaler = MinMaxScaler()
+weights=numpy.array([[200,000.],[1.]])
+rescaled_w1=scaler.fit_transform(weights)
+rescaled_w2=scaler.fit_transform(weights)
+
 
 
 

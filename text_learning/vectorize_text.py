@@ -6,8 +6,8 @@ import re
 import sys
 import os
 
-sys.path.append(os.path.abspath("../tools/"))
-from parse_out_email_text import parseOutText
+sys.path.append("../UD120-PROJECTS")
+from tools.parse_out_email_text import parseOutText
 
 """
     Starter code to process the emails from Sara and Chris to extract

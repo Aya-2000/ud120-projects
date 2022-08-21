@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 
+from logging import lastResort
 import joblib
 import numpy
+from sklearn import linear_model
 numpy.random.seed(42)
 
 
 ### The words (features) and authors (labels), already largely processed.
 ### These files should have been created from the previous (Lesson 10)
 ### mini-project.
-words_file = "../text_learning/your_word_data.pkl" 
-authors_file = "../text_learning/your_email_authors.pkl"
-word_data = joblib.load( open(words_file, "r"))
+words_file = "../UD120-PROJECTS/tools/word_data.pkl"
+authors_file = "../UD120-PROJECTS/tools/email_authors.pkl"
+word_data = joblib.load( open(words_file , "r"))
 authors = joblib.load( open(authors_file, "r") )
 
 
@@ -37,6 +39,11 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+reg = linear_model.Lasso()
+reg.fit(features_train,labels_train)
+pred=reg.predict(features_train)
+print(reg.coef_)
+
 
 
 
