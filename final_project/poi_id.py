@@ -70,6 +70,7 @@ my_dataset = data_dict
 
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
+data=[]
 labels, features = targetFeatureSplit(data)
 
 ### Task 4: Try a varity of classifiers
@@ -78,7 +79,8 @@ labels, features = targetFeatureSplit(data)
 ### you'll need to use Pipelines. For more info:
 ### http://scikit-learn.org/stable/modules/pipeline.html
 from sklearn.model_selection import cross_validate
-from sklearn.cross_validation import StratifiedShuffleSplit
+from sklearn.model_selection import StratifiedShuffleSplit
+
 def prec_recall (clf, data, feature_list, folds=1000):
     labels, features = targetFeatureSplit(data)
     cv = StratifiedShuffleSplit(labels, folds, random_state = 42)
@@ -152,8 +154,7 @@ def prec_recall (clf, data, feature_list, folds=1000):
 #})
 # Example starting point. Try investigating other evaluation techniques!
 from sklearn.model_selection import train_test_split
-features_train, features_test, labels_train, labels_test = \
-    train_test_split(features, labels, test_size=0.3, random_state=42)
+features_train, features_test, labels_train, labels_test =train_test_split(features, labels, test_size=0.3, random_state=42)
 # TUNED RESULT
 print( "\n","-"*34)
 print (" Decision Tree Classifier Results")

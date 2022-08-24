@@ -27,6 +27,8 @@
 
 import numpy as np
 import pandas as pd
+import sys
+sys.path.append("../UD120-PROJECTS")
 
 def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True, remove_any_zeroes=False, sort_keys = False):
     """ convert dictionary to numpy array of features
@@ -96,8 +98,8 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
 
     return np.array(return_list)
 
-
-def targetFeatureSplit( data ):
+data=[]
+def targetFeatureSplit ( data ):
     """ 
         given a numpy array like the one returned from
         featureFormat, separate out the first feature
@@ -115,6 +117,6 @@ def targetFeatureSplit( data ):
         target.append( it[0] )
         features.append( it[1:] )
         
-
+   
     return target, features
 
